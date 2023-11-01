@@ -55,15 +55,14 @@ const CoinInfo = ({ coin }) => {
   const { currency } = CryptoState();
   const classes = useStyles();
 
+  const fetchHistoricData = async () => {
+    const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
+    sethistoricalData(data.prices);
+  };
+
   useEffect(() => {
-    const fetchHistoricData = async () => {
-      const { data } = await axios.get(
-        HistoricalChart(coin.id, days, currency)
-      );
-      sethistoricalData(data.prices);
-    };
     fetchHistoricData();
-  }, [currency, days, coin?.id]);
+  }, [currency, days]);
 
   const darkTheme = createTheme({
     palette: {

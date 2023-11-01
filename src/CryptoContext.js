@@ -9,8 +9,8 @@ import { doc, onSnapshot } from "firebase/firestore";
 const Crypto = React.createContext();
 
 const CryptoContext = ({ children }) => {
-  const [currency, setcurrency] = useState("INR");
-  const [symbol, setsymbol] = useState("₹");
+  const [currency, setcurrency] = useState("USD");
+  const [symbol, setsymbol] = useState("$");
   const [coins, setcoins] = useState([]);
   const [loading, setloading] = useState(false);
   const [user, setuser] = useState(null);
@@ -28,7 +28,7 @@ const CryptoContext = ({ children }) => {
 
       var unsubscribe = onSnapshot(coinRef, (coin) => {
         if (coin.exists()) {
-          console.log(coin.data().coins);
+          // console.log(coin.data().coins);
           setwatchlist(coin.data().coins);
         } else {
           console.log("No items in watchlist");

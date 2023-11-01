@@ -76,13 +76,14 @@ export default function Coinpage() {
 
   const { currency, symbol, user, watchlist, setalert } = CryptoState();
 
+  const fetchCoin = async () => {
+    const { data } = await axios.get(SingleCoin(id));
+    setcoin(data);
+  };
+
   useEffect(() => {
-    const fetchCoin = async () => {
-      const { data } = await axios.get(SingleCoin(id));
-      setcoin(data);
-    };
     fetchCoin();
-  }, [id]);
+  }, []);
 
   const inwatchlist = watchlist.includes(coin?.id);
 

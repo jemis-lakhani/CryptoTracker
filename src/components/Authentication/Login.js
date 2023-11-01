@@ -26,7 +26,7 @@ const Login = ({ handleClose }) => {
         message: `Login  Succesfull. Welcome ${result.user.email}`,
         type: "success",
       });
-      console.log(result);
+      // console.log(result);
       handleClose();
     } catch (error) {
       setalert({

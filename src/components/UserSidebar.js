@@ -167,18 +167,20 @@ export default function UserSidebar() {
                   </span>
                   {coins.map((coin) => {
                     if (watchlist.includes(coin.id))
-                      <div className={classes.coin}>
-                        <span>{coin.name}</span>
-                        <span style={{ display: "flex", gap: 8 }}>
-                          {symbol}
-                          {numberWithCommas(coin.current_price.toFixed(2))}
-                          <AiFillDelete
-                            style={{ cursor: "pointer" }}
-                            fontsize="16"
-                            onClick={() => removefromwatchlist(coin)}
-                          />
-                        </span>
-                      </div>;
+                      return (
+                        <div className={classes.coin}>
+                          <span>{coin.name}</span>
+                          <span style={{ display: "flex", gap: 8 }}>
+                            {symbol}
+                            {numberWithCommas(coin.current_price.toFixed(2))}
+                            <AiFillDelete
+                              style={{ cursor: "pointer" }}
+                              fontsize="16"
+                              onClick={() => removefromwatchlist(coin)}
+                            />
+                          </span>
+                        </div>
+                      );
                   })}
                 </div>
               </div>
