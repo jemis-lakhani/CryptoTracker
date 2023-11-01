@@ -74,7 +74,7 @@ export default function UserSidebar() {
   const [state, setState] = React.useState({
     right: false,
   });
-  const { user, setalert, watchlist, coins, symbol, coin } = CryptoState();
+  const { user, setalert, watchlist, coins, symbol } = CryptoState();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -167,20 +167,18 @@ export default function UserSidebar() {
                   </span>
                   {coins.map((coin) => {
                     if (watchlist.includes(coin.id))
-                      return (
-                        <div className={classes.coin}>
-                          <span>{coin.name}</span>
-                          <span style={{ display: "flex", gap: 8 }}>
-                            {symbol}
-                            {numberWithCommas(coin.current_price.toFixed(2))}
-                            <AiFillDelete
-                              style={{ cursor: "pointer" }}
-                              fontsize="16"
-                              onClick={() => removefromwatchlist(coin)}
-                            />
-                          </span>
-                        </div>
-                      );
+                      <div className={classes.coin}>
+                        <span>{coin.name}</span>
+                        <span style={{ display: "flex", gap: 8 }}>
+                          {symbol}
+                          {numberWithCommas(coin.current_price.toFixed(2))}
+                          <AiFillDelete
+                            style={{ cursor: "pointer" }}
+                            fontsize="16"
+                            onClick={() => removefromwatchlist(coin)}
+                          />
+                        </span>
+                      </div>;
                   })}
                 </div>
               </div>
